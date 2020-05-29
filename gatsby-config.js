@@ -1,42 +1,61 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: 'Juan Picado <jotadeveloper@gmail.com>',
+    desc: 'A lightweight open source private npm proxy registry',
+    siteName: 'Verdaccio',
+    title: 'A lightweight open source private npm proxy registry',
+    url: 'https://verdaccio.org',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-plugin-material-ui',
+      options: {
+        stylesProvider: {
+          injectFirst: true,
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `pages`,
+        path: `${__dirname}/docs`,
       },
     },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/docs`
-      }
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        name: `translations`,
+        path: `${__dirname}/crowdin`,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'gatsby-starter-material-emotion',
+        short_name: 'starter',
+        start_url: '/',
+        background_color: '#000',
+        theme_color: '#fff',
+        display: 'minimal-ui',
+        icon: path.join(__dirname, 'src/images/gatsby-icon.png'), // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: path.join(__dirname, 'src/images'),
+      },
+    },
+    'gatsby-plugin-twitter',
+    'gatsby-plugin-emotion',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-typescript',
   ],
-}
+};
